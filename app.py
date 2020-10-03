@@ -1,9 +1,22 @@
 from bottle import Bottle, run, template, static_file
 import csv
 import os
+import sys
 
 #fichier=os.environ['DATACOVID']
 fichier = './time_series_covid19_deaths_global.csv'
+
+# clone the data files
+#path  = "."
+clone = "git clone https://github.com/CSSEGISandData/COVID-19.git"
+
+#os.system("sshpass -p your_password ssh user_name@your_localhost")
+#os.chdir(path) # Specifying the path where the cloned project needs to be copied
+
+print("cloning Github data" )
+os.system(clone) # Cloning
+print("end cloning")
+
 
 population_us = 329256465
 population_fr = 67848156
