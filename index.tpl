@@ -15,7 +15,7 @@
     data: {
         labels: {{!label}},
         datasets: [{
-            label: 'My First dataset',
+            label: 'Progression en France',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: {{!data}}

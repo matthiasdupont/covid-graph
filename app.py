@@ -4,7 +4,7 @@ import os
 import sys
 
 #fichier=os.environ['DATACOVID']
-fichier = './time_series_covid19_deaths_global.csv'
+fichier = '/opt/app/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
 
 # clone the data files
 #path  = "."
@@ -23,7 +23,7 @@ population_fr = 67848156
 population_it = 60359546
 population_sp = 46934632
 population_uk = 65761117
-debut = 150
+debut = 50
 labels=list()
 
 def derivee(raw_data):
@@ -115,11 +115,11 @@ def server_static(filepath):
 @app.route('/')
 
 def index():
-    datas= [('2018-02-02 08:00:00', 8.0), ('2018-02-02 09:00:00', 9.0)]
+    #datas= [('2018-02-02 08:00:00', 8.0), ('2018-02-02 09:00:00', 9.0)]
     #for d in datas:
     #    labels.append(d[0])
 
-    data = [d[1] for d in datas]
+    #data = [d[1] for d in datas]
 
 	#assert len(labels)=len(progression_france), "Error : number of dates is different from number of values!"
     return template('index.tpl',label=labels, data=progression_france)
