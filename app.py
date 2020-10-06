@@ -90,11 +90,11 @@ mean_us=moyenne(progression_us, population_us)
 
 
 #Affichage des chiffres de la veille
-print("dernier élément progression France:"+ str(progression_france[-1]))
-print("dernier élément progression Italie:"+ str(progression_italy[-1]))
-print("dernier élément progression Espagne:"+ str(progression_spain[-1]))
-print("dernier élément progression UK:"+ str(progression_uk[-1]))
-print("dernier élément progression US:"+ str(progression_us[-1]))
+print("dernier element progression France:"+ str(progression_france[-1]))
+print("dernier element progression Italie:"+ str(progression_italy[-1]))
+print("dernier element progression Espagne:"+ str(progression_spain[-1]))
+print("dernier element progression UK:"+ str(progression_uk[-1]))
+print("dernier element progression US:"+ str(progression_us[-1]))
 
 #affichage progression pour 10 000 habitat
 #plt.plot(range(len(mean_fr)), mean_fr, color='Blue', marker='', linestyle='solid')
