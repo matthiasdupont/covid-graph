@@ -4,13 +4,15 @@ import os
 import sys
 
 #fichier=os.environ['DATACOVID']
+# datafile for container
 fichier = '/opt/app/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
+
+# datafile for local testing
+#fichier="/Users/matthias/python/data/COVID19/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
 
 # clone the data files
 #path  = "."
 clone = "git clone https://github.com/CSSEGISandData/COVID-19.git"
-
-#os.system("sshpass -p your_password ssh user_name@your_localhost")
 #os.chdir(path) # Specifying the path where the cloned project needs to be copied
 
 print("cloning Github data" )
@@ -115,13 +117,7 @@ def server_static(filepath):
 @app.route('/')
 
 def index():
-    #datas= [('2018-02-02 08:00:00', 8.0), ('2018-02-02 09:00:00', 9.0)]
-    #for d in datas:
-    #    labels.append(d[0])
-
-    #data = [d[1] for d in datas]
-
 	#assert len(labels)=len(progression_france), "Error : number of dates is different from number of values!"
-    return template('index.tpl',label=labels, data=progression_france)
+    return template('index.tpl',label=labels, data_fr=mean_fr, data_us=mean_us, data_uk=mean_uk, data_it=mean_it, data_sp=mean_sp)
 
 run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)

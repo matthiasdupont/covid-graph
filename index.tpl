@@ -14,12 +14,41 @@
     // The data for our dataset
     data: {
         labels: {{!label}},
-        datasets: [{
-            label: 'Progression en France',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: {{!data}}
-        }]
+        datasets:
+        [
+          {
+            label: 'France',
+            //backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(0, 0, 255)',
+            data: {{!data_fr}}
+          },
+          {
+            label: 'US',
+            //backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(0, 0, 102)',
+            data: {{!data_us}}
+          }
+          ,
+          {
+            label: 'UK',
+            //backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(102, 255, 102)',
+            data: {{!data_uk}}
+          },
+          {
+            label: 'SP',
+            //backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 255, 102)',
+            data: {{!data_sp}}
+          },
+          {
+            label: 'IT',
+            //backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 0, 0)',
+            data: {{!data_it}}
+          }
+
+      ]
     },
     // Configuration options go here
     options: {}
