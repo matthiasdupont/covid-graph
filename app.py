@@ -2,13 +2,18 @@ from bottle import Bottle, run, template, static_file
 import csv
 import os
 import sys
+import time
+
 
 #fichier=os.environ['DATACOVID']
 # datafile for container
 fichier = '/opt/app/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
 
-# datafile for local testing
+# datafile for local testing (home desktop)
 #fichier="/Users/matthias/python/data/COVID19/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+
+# datafile for local testing (home work desktop)
+#fichier="/Users/20011409/python/html-graph/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
 
 # clone the data files
 #path  = "."
@@ -19,6 +24,9 @@ print("cloning Github data" )
 os.system(clone) # Cloning
 print("end cloning")
 
+#Get update time
+now = time.localtime(time.time())
+update_time = time.strftime("%y/%m/%d %H:%M", now)
 
 population_us = 329256465
 population_fr = 67848156
@@ -118,6 +126,6 @@ def server_static(filepath):
 
 def index():
 	#assert len(labels)=len(progression_france), "Error : number of dates is different from number of values!"
-    return template('index.tpl',label=labels, data_fr=mean_fr, data_us=mean_us, data_uk=mean_uk, data_it=mean_it, data_sp=mean_sp)
+    return template('index.tpl',update_time=update_time, label=labels, data_fr=mean_fr, data_us=mean_us, data_uk=mean_uk, data_it=mean_it, data_sp=mean_sp)
 
 run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)

@@ -4,6 +4,12 @@
     <script src="./static/Charts.js"></script>
  </head>
  <body>
+   <div>
+     Last update : {{!update_time}}
+     <script>
+      {{!update_time}}
+     </script>
+   </div>
    <canvas id="myChart"></canvas>
    <script>
     var ctx = document.getElementById('myChart').getContext('2d');
