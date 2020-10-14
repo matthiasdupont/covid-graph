@@ -7,7 +7,9 @@ import time
 
 #fichier=os.environ['DATACOVID']
 # datafile for container
-fichier = '/opt/app/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
+#fichier = '/opt/app/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
+
+fichier = '/opt/app/time_series_covid19_deaths_global.csv'
 
 # datafile for local testing (home desktop)
 #fichier="/Users/matthias/python/data/COVID19/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
@@ -18,10 +20,11 @@ fichier = '/opt/app/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_s
 # clone the data files
 #path  = "."
 clone = "git clone https://github.com/CSSEGISandData/COVID-19.git"
+wget_file="wget https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
 #os.chdir(path) # Specifying the path where the cloned project needs to be copied
 
 print("cloning Github data" )
-os.system(clone) # Cloning
+os.system(wget_file) # Cloning
 print("end cloning")
 
 #Get update time

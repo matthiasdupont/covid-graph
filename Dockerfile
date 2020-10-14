@@ -7,7 +7,7 @@ RUN apt-get update
 #RUN apt-get -y install python3
 #RUN apt-get -y install python3-pip
 RUN pip3 install bottle
-RUN apt-get -y install git
+RUN apt-get -y install wget
 # creation du repertoire applicatif (mkdir + cd)
 WORKDIR /opt/app
 COPY . .
