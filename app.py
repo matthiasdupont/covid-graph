@@ -33,7 +33,6 @@ print("end cloning")
 #Get update time
 now = time.localtime(time.time())
 update_time = time.strftime("%y/%m/%d %H:%M", now)
-print
 population_us = 329256465
 population_fr = 67848156
 population_it = 60359546
@@ -58,9 +57,9 @@ def moyenne(raw_data, population):
 	moy=[]
 	moy=[i*10000/population for i in raw_data]
 	# suppression des valeurs abérantes
-	for c,i in enumerate(moy):
-		if i > 0.20:
-			moy[c]=0
+	#for c,i in enumerate(moy):
+		#if i > 0.20:
+			#moy[c]=0
 	return moy
 
 with open(fichier, 'r') as f:
@@ -71,6 +70,7 @@ with open(fichier, 'r') as f:
 		if province == 'Province/State':
 			longueur=len(row)
 			labels=row[debut:longueur]
+			print("Nombre de valeurs pour les morts:"+ str(longueur))
 			#days=row[4:longueur]
 		if province == '':
 			if state == 'France':
@@ -99,6 +99,7 @@ with open(fichier2, 'r') as f:
 		if province == 'Province/State':
 			longueur=len(row)
 			labels=row[debut:longueur]
+			print("Nombre de valeurs pour les cas confirmes:"+ str(longueur))
 			#days=row[4:longueur]
 		if province == '':
 			if state == 'France':
@@ -146,6 +147,7 @@ confirmed_mean_us=moyenne(confirmed_progression_us, population_us)
 
 #Affichage des chiffres de la veille
 print("dernier element progression France:"+ str(progression_france[-1]))
+print("dernier element progression confirmé France:"+ str(confirmed_progression_france[-1]))
 print("dernier element progression Italie:"+ str(progression_italy[-1]))
 print("dernier element progression Espagne:"+ str(progression_spain[-1]))
 print("dernier element progression UK:"+ str(progression_uk[-1]))
@@ -171,6 +173,6 @@ def server_static(filepath):
 
 def index():
 	#assert len(labels)=len(progression_france), "Error : number of dates is different from number of values!"
-    return template('index.tpl',update_time=update_time, label=labels, data_fr=mean_fr,confirmed_data_fr=confirmed_mean_fr, data_us=mean_us, data_uk=mean_uk, data_it=mean_it, data_sp=mean_sp, last_value_fr=progression_france[-1])
+    return template('index.tpl',update_time=update_time, label=labels, data_fr=mean_fr,confirmed_data_fr=confirmed_progression_france, data_us=mean_us, data_uk=mean_uk, data_it=mean_it, data_sp=mean_sp, last_value_fr=progression_france[-1])
 
 run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)

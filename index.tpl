@@ -17,6 +17,10 @@
     </div>
 
     <div style="width:75%">
+      <canvas id="Chart_confirmed"></canvas>
+    </div>
+
+    <div style="width:75%">
       <canvas id="myChart2"></canvas>
     </div>
 
@@ -42,6 +46,28 @@
             borderColor: 'rgb(0, 0, 255)',
             data: {{!data_fr}}
           },
+        ]
+    },
+    // Configuration options go here
+    options: {
+      title: {
+        text:"Evolution"
+      }
+    }
+});
+   </script>
+
+   <script>
+    var ctx = document.getElementById('Chart_confirmed').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: {{!label}},
+        datasets:
+        [
           {
             label: 'confirmed France',
             //backgroundColor: 'rgb(255, 99, 132)',
