@@ -37,16 +37,16 @@
         datasets:
         [
           {
-            label: 'France',
+            label: 'death France',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 255)',
             data: {{!data_fr}}
           },
           {
-            label: 'US',
+            label: 'confirmed France',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 102)',
-            data: {{!data_us}}
+            data: {{!confirmed_data_fr}}
           }
         ]
     },
@@ -70,6 +70,18 @@
         labels: {{!label}},
         datasets:
         [
+          {
+            label: 'fr',
+            //backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(0, 0, 255)',
+            data: {{!data_fr}}
+          },
+          {
+            label: 'US',
+            //backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(0, 0, 102)',
+            data: {{!data_us}}
+          },
           {
             label: 'UK',
             //backgroundColor: 'rgb(255, 99, 132)',

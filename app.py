@@ -10,6 +10,7 @@ import time
 #fichier = '/opt/app/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
 
 fichier = '/opt/app/time_series_covid19_deaths_global.csv'
+fichier2 = '/opt/app/time_series_covid19_confirmed_global.csv'
 
 # datafile for local testing (home desktop)
 #fichier="/Users/matthias/python/data/COVID19/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
@@ -17,20 +18,22 @@ fichier = '/opt/app/time_series_covid19_deaths_global.csv'
 # datafile for local testing (home work desktop)
 #fichier="/Users/20011409/python/html-graph/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
 
-# clone the data files
+# get the data files
 #path  = "."
-clone = "git clone https://github.com/CSSEGISandData/COVID-19.git"
-wget_file="wget https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+wget_file1="wget https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+wget_file2="wget https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+
 #os.chdir(path) # Specifying the path where the cloned project needs to be copied
 
 print("cloning Github data" )
-os.system(wget_file) # Cloning
+os.system(wget_file1) # Cloning
+os.system(wget_file2)
 print("end cloning")
 
 #Get update time
 now = time.localtime(time.time())
 update_time = time.strftime("%y/%m/%d %H:%M", now)
-print(update_time)
+print
 population_us = 329256465
 population_fr = 67848156
 population_it = 60359546
@@ -87,12 +90,46 @@ with open(fichier, 'r') as f:
 				longueur=len(row)
 				us=row[debut:longueur]
 
+
+with open(fichier2, 'r') as f:
+	tab_reader = csv.reader(f, delimiter=',')
+	for row in tab_reader:
+		province = row[0]
+		state = row[1]
+		if province == 'Province/State':
+			longueur=len(row)
+			labels=row[debut:longueur]
+			#days=row[4:longueur]
+		if province == '':
+			if state == 'France':
+				#print(row)
+				longueur=len(row)
+				confirmed_france=row[debut:longueur]
+			if state == 'Italy':
+				longueur=len(row)
+				confirmed_italy=row[debut:longueur]
+			if state == 'Spain':
+				longueur=len(row)
+				confirmed_spain=row[debut:longueur]
+			if state == 'United Kingdom':
+				longueur=len(row)
+				confirmed_uk=row[debut:longueur]
+			if state == 'US':
+				longueur=len(row)
+				confirmed_us=row[debut:longueur]
+
 # la progression est la dérivée des données brutes ...
 progression_france = derivee(france)
 progression_italy=derivee(italy)
 progression_spain=derivee(spain)
 progression_uk=derivee(uk)
 progression_us=derivee(us)
+
+confirmed_progression_france = derivee(confirmed_france)
+confirmed_progression_italy=derivee(confirmed_italy)
+confirmed_progression_spain=derivee(confirmed_spain)
+confirmed_progression_uk=derivee(confirmed_uk)
+confirmed_progression_us=derivee(confirmed_us)
 
 #calcul de la moyenne pour 10 000 habitants
 mean_fr=moyenne(progression_france, population_fr)
@@ -101,6 +138,11 @@ mean_sp=moyenne(progression_spain,population_sp)
 mean_uk=moyenne(progression_uk,population_uk)
 mean_us=moyenne(progression_us, population_us)
 
+confirmed_mean_fr=moyenne(confirmed_progression_france, population_fr)
+confirmed_mean_it=moyenne(confirmed_progression_italy, population_it)
+confirmed_mean_sp=moyenne(confirmed_progression_spain,population_sp)
+confirmed_mean_uk=moyenne(confirmed_progression_uk,population_uk)
+confirmed_mean_us=moyenne(confirmed_progression_us, population_us)
 
 #Affichage des chiffres de la veille
 print("dernier element progression France:"+ str(progression_france[-1]))
@@ -129,6 +171,6 @@ def server_static(filepath):
 
 def index():
 	#assert len(labels)=len(progression_france), "Error : number of dates is different from number of values!"
-    return template('index.tpl',update_time=update_time, label=labels, data_fr=mean_fr, data_us=mean_us, data_uk=mean_uk, data_it=mean_it, data_sp=mean_sp, last_value_fr=progression_france[-1])
+    return template('index.tpl',update_time=update_time, label=labels, data_fr=mean_fr,confirmed_data_fr=confirmed_mean_fr, data_us=mean_us, data_uk=mean_uk, data_it=mean_it, data_sp=mean_sp, last_value_fr=progression_france[-1])
 
 run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)
