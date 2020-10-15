@@ -30,7 +30,7 @@ print("end cloning")
 #Get update time
 now = time.localtime(time.time())
 update_time = time.strftime("%y/%m/%d %H:%M", now)
-
+print(update_time)
 population_us = 329256465
 population_fr = 67848156
 population_it = 60359546
@@ -129,6 +129,6 @@ def server_static(filepath):
 
 def index():
 	#assert len(labels)=len(progression_france), "Error : number of dates is different from number of values!"
-    return template('index.tpl',update_time=update_time, label=labels, data_fr=mean_fr, data_us=mean_us, data_uk=mean_uk, data_it=mean_it, data_sp=mean_sp)
+    return template('index.tpl',update_time=update_time, label=labels, data_fr=mean_fr, data_us=mean_us, data_uk=mean_uk, data_it=mean_it, data_sp=mean_sp, last_value_fr=progression_france[-1])
 
 run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)

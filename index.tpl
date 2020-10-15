@@ -5,12 +5,26 @@
  </head>
  <body>
    <div>
-     Last update : {{!update_time}}
-     <script>
-      {{!update_time}}
-     </script>
-   </div>
-   <canvas id="myChart"></canvas>
+      Last update :{{!update_time}}
+      <script>
+        {{!update_time}}
+      </script>
+    </br>  Last value france:{{!last_value_fr}}
+    </div>
+
+    <div style="width:75%">
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <div style="width:75%">
+      <canvas id="myChart2"></canvas>
+    </div>
+
+    <script>
+      Chart.defaults.global.title.display = true;
+      Chart.defaults.global.title.text = "Pas de Titre";
+    </script>
+
    <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -34,7 +48,28 @@
             borderColor: 'rgb(0, 0, 102)',
             data: {{!data_us}}
           }
-          ,
+        ]
+    },
+    // Configuration options go here
+    options: {
+      title: {
+        text:"Evolution"
+      }
+    }
+});
+   </script>
+
+   <script>
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: {{!label}},
+        datasets:
+        [
           {
             label: 'UK',
             //backgroundColor: 'rgb(255, 99, 132)',
