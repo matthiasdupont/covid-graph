@@ -1,15 +1,16 @@
 <html>
  <head>
    <title>Covid Data graph</title>
+   <link rel="stylesheet" href="./static/style.css">
     <script src="./static/Charts.js"></script>
  </head>
  <body>
-   <div>
-      Last update :{{!update_time}}
+   <div id="intro-text">
+     Last update: {{!update_time}}
       <script>
         {{!update_time}}
       </script>
-    </br>  Last value france:{{!last_value_fr}}
+    </br>  Last value france: {{!last_value_fr}}
     </div>
 
     <div style="width:75%">
