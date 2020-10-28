@@ -143,7 +143,7 @@
     // Configuration options go here
     options: {
       title: {
-        text:"compared Evolution of Death (France, US, UK, Spain and Italy)"
+        text:"Compared evolution of Death (per 10 000 inhabitants)"
       }
     }
 });
