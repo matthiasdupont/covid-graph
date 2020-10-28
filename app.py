@@ -173,6 +173,27 @@ def server_static(filepath):
 
 def index():
 	#assert len(labels)=len(progression_france), "Error : number of dates is different from number of values!"
-    return template('index.tpl',update_time=update_time, label=labels, data_fr=mean_fr,confirmed_data_fr=confirmed_progression_france, data_us=mean_us, data_uk=mean_uk, data_it=mean_it, data_sp=mean_sp, last_value_fr=progression_france[-1])
+    return template('index.tpl',
+					update_time=update_time,
+					label=labels,
+					month_label=labels[-60:],
+					progression_fr=progression_france,
+					confirmed_data_fr=confirmed_progression_france,
+					data_fr=mean_fr,
+					data_us=mean_us,
+					data_uk=mean_uk,
+					data_it=mean_it,
+					data_sp=mean_sp,
+					data_month_fr=mean_fr[-60:],
+					data_month_us=mean_us[-60:],
+					data_month_uk=mean_uk[-60:],
+					data_month_it=mean_it[-60:],
+					data_month_sp=mean_sp[-60:],
+					last_value_fr=progression_france[-1],
+				    last_value_us=progression_us[-1],
+					last_value_uk=progression_uk[-1],
+					last_value_sp=progression_spain[-1],
+					last_value_it=progression_italy[-1],
+					)
 
 run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)
