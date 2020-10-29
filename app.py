@@ -42,13 +42,6 @@ population_uk = 65761117
 debut = 50
 labels=list()
 
-
-
-#print ("1 - app = bottle")
-app = Bottle()
-#@app.route('/static/<filepath:path>')
-@app.route('/')
-
 def derivee(raw_data):
 	value=0
 	prog=[]
@@ -165,13 +158,14 @@ confirmed_mean_us=moyenne(confirmed_progression_us, population_us)
 
 #
 #print("avant run(app ..)")
-run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)
+app = Bottle()
+
+@app.route('/static/<filepath:path>')
 
 def server_static(filepath):
     return static_file(filepath, root='static/')
 
-
-#@app.route('/')
+@app.route('/')
 
 def index():
 	#assert len(labels)=len(progression_france), "Error : number of dates is different from number of values!"
@@ -197,3 +191,5 @@ def index():
 					last_value_sp=progression_spain[-1],
 					last_value_it=progression_italy[-1],
 					)
+
+run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)
