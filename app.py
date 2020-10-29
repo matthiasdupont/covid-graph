@@ -20,8 +20,8 @@ fichier2 = '/opt/app/time_series_covid19_confirmed_global.csv'
 
 # get the data files
 #path  = "."
-wget_file1="wget https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
-wget_file2="wget https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+wget_file1="wget -q https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+wget_file2="wget -q https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
 
 #os.chdir(path) # Specifying the path where the cloned project needs to be copied
 
@@ -31,6 +31,7 @@ os.system(wget_file2)
 print("end cloning")
 
 #Get update time
+
 now = time.localtime(time.time())
 update_time = time.strftime("%y/%m/%d %H:%M", now)
 population_us = 329256465
@@ -41,15 +42,25 @@ population_uk = 65761117
 debut = 50
 labels=list()
 
+
+
+#print ("1 - app = bottle")
+app = Bottle()
+#@app.route('/static/<filepath:path>')
+@app.route('/')
+
 def derivee(raw_data):
 	value=0
 	prog=[]
 	for i, v in enumerate(raw_data[:-1]):
+		try:
 			value=int(raw_data[i+1])-int(raw_data[i])
-			if value > 0:
-				prog.append(value)
-			else:
-				prog.append(0)
+		except ValueError:
+			print("[ERROR] in derivee function : could not convert data into an integer.")
+		if value > 0:
+			prog.append(value)
+		else:
+			prog.append(0)
 	return prog
 
 def moyenne(raw_data, population):
@@ -62,6 +73,7 @@ def moyenne(raw_data, population):
 			#moy[c]=0
 	return moy
 
+#print ("3 - lecture fichiers")
 with open(fichier, 'r') as f:
 	tab_reader = csv.reader(f, delimiter=',')
 	for row in tab_reader:
@@ -99,7 +111,7 @@ with open(fichier2, 'r') as f:
 		if province == 'Province/State':
 			longueur=len(row)
 			labels=row[debut:longueur]
-			print("Nombre de valeurs pour les cas confirmes:"+ str(longueur))
+			#print("Nombre de valeurs pour les cas confirmes:"+ str(longueur))
 			#days=row[4:longueur]
 		if province == '':
 			if state == 'France':
@@ -119,7 +131,9 @@ with open(fichier2, 'r') as f:
 				longueur=len(row)
 				confirmed_us=row[debut:longueur]
 
+#calculs
 # la progression est la dérivée des données brutes ...
+#print ("calculs")
 progression_france = derivee(france)
 progression_italy=derivee(italy)
 progression_spain=derivee(spain)
@@ -145,31 +159,19 @@ confirmed_mean_sp=moyenne(confirmed_progression_spain,population_sp)
 confirmed_mean_uk=moyenne(confirmed_progression_uk,population_uk)
 confirmed_mean_us=moyenne(confirmed_progression_us, population_us)
 
-#Affichage des chiffres de la veille
-print("dernier element progression France:"+ str(progression_france[-1]))
-print("dernier element progression confirmé France:"+ str(confirmed_progression_france[-1]))
-print("dernier element progression Italie:"+ str(progression_italy[-1]))
-print("dernier element progression Espagne:"+ str(progression_spain[-1]))
-print("dernier element progression UK:"+ str(progression_uk[-1]))
-print("dernier element progression US:"+ str(progression_us[-1]))
+#
 
-#affichage progression pour 10 000 habitat
-#plt.plot(range(len(mean_fr)), mean_fr, color='Blue', marker='', linestyle='solid')
-#plt.plot(range(len(mean_it)), mean_it, color='Green', marker='', linestyle='solid')
-#plt.plot(range(len(mean_sp)), mean_sp, color='Yellow', marker='', linestyle='solid')
-#plt.plot(range(len(mean_uk)), mean_uk, color='Pink', marker='', linestyle='solid')
-#plt.plot(range(len(mean_us)), mean_us, color='Black', marker='', linestyle='solid')
-#plt.show()
+#app et app.route ici
 
-
-app = Bottle()
-
-@app.route('/static/<filepath:path>')
+#
+#print("avant run(app ..)")
+run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)
 
 def server_static(filepath):
     return static_file(filepath, root='static/')
 
-@app.route('/')
+
+#@app.route('/')
 
 def index():
 	#assert len(labels)=len(progression_france), "Error : number of dates is different from number of values!"
@@ -195,5 +197,3 @@ def index():
 					last_value_sp=progression_spain[-1],
 					last_value_it=progression_italy[-1],
 					)
-
-run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)
