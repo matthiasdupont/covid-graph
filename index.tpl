@@ -55,6 +55,7 @@
             label: 'death France',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 255)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!progression_fr}}
           },
         ]
@@ -83,6 +84,7 @@
             label: 'confirmed France',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 102)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!confirmed_data_fr}}
           }
         ]
@@ -111,30 +113,35 @@
             label: 'fr',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 255)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!data_fr}}
           },
           {
             label: 'US',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 102)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!data_us}}
           },
           {
             label: 'UK',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(102, 255, 102)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!data_uk}}
           },
           {
             label: 'SP',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 255, 102)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!data_sp}}
           },
           {
             label: 'IT',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 0, 0)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!data_it}}
           }
 
@@ -164,30 +171,35 @@
             label: 'fr',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 255)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!data_month_fr}}
           },
           {
             label: 'US',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 102)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!data_month_us}}
           },
           {
             label: 'UK',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(102, 255, 102)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!data_month_uk}}
           },
           {
             label: 'SP',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 255, 102)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!data_month_sp}}
           },
           {
             label: 'IT',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 0, 0)',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
             data: {{!data_month_it}}
           }
 
@@ -196,7 +208,7 @@
     // Configuration options go here
     options: {
       title: {
-        text:"Monthly Death Evolution (per 10 000 inhabitants)"
+        text:"Last 2 Months compared death evolution (per 10 000 inhabitants)"
       }
     }
 });
