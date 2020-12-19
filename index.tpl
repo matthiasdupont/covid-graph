@@ -27,6 +27,14 @@
     <div style="width:75%">
       <canvas id="Chart_confirmed"></canvas>
     </div>
+    <div style="width:75%">
+      <canvas id="progression_us"></canvas>
+    </div>
+
+    <div style="width:75%">
+      <canvas id="confirmed_us"></canvas>
+    </div>
+
 
     <div style="width:75%">
       <canvas id="compared_evolution_chart"></canvas>
@@ -40,62 +48,39 @@
       Chart.defaults.global.title.text = "Pas de Titre";
     </script>
 
-   <script>
-    var ctx = document.getElementById('Progression_france_chart').getContext('2d');
+<script type="text/javascript">
+  function display_graph(graph_id,graph_data,graph_labels,graph_color,title) {
+    var ctx = document.getElementById(graph_id).getContext('2d');
     var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
 
     // The data for our dataset
     data: {
-        labels: {{!label}},
+        labels: graph_labels,
         datasets:
         [
           {
-            label: 'death France',
-            //backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(0, 0, 255)',
+            label: title,
+            borderColor: graph_color,
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!progression_fr}}
+            data: graph_data
           },
         ]
     },
     // Configuration options go here
     options: {
       title: {
-        text:"Death Evolution in France"
+        text:title
       }
     }
-});
-   </script>
+  });
 
+  }
+</script>
    <script>
-    var ctx = document.getElementById('Chart_confirmed').getContext('2d');
-    var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
-
-    // The data for our dataset
-    data: {
-        labels: {{!label}},
-        datasets:
-        [
-          {
-            label: 'confirmed France',
-            //backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(0, 0, 102)',
-            backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!confirmed_data_fr}}
-          }
-        ]
-    },
-    // Configuration options go here
-    options: {
-      title: {
-        text:"Evolution of confirmed cases in France"
-      }
-    }
-});
+     display_graph('Progression_france_chart',{{!progression_fr}},{{!label}},'rgb(0, 0, 255)','Mortalité en France');
+     display_graph('Chart_confirmed',{{!confirmed_data_fr}},{{!label}},'rgb(0, 0, 102)','Confirmed');
    </script>
 
    <script>

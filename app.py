@@ -175,6 +175,8 @@ def index():
 					month_label=labels[-60:],
 					progression_fr=progression_france,
 					confirmed_data_fr=confirmed_progression_france,
+					progression_us=progression_us,
+					confirmed_data_us=confirmed_progression_us,
 					data_fr=mean_fr,
 					data_us=mean_us,
 					data_uk=mean_uk,
