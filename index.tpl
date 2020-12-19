@@ -11,7 +11,7 @@
      </p>
    </br>Last update: {{!update_time}}
       <script>
-        {{!update_time}}
+        print({{!update_time}});
       </script>
     </br>  Last value france: {{!last_value_fr}}
     </br>  Last value US: {{!last_value_us}}
@@ -35,6 +35,13 @@
       <canvas id="confirmed_us"></canvas>
     </div>
 
+    <div style="width:75%">
+      <canvas id="progression_uk"></canvas>
+    </div>
+
+    <div style="width:75%">
+      <canvas id="confirmed_uk"></canvas>
+    </div>
 
     <div style="width:75%">
       <canvas id="compared_evolution_chart"></canvas>
@@ -80,7 +87,11 @@
 </script>
    <script>
      display_graph('Progression_france_chart',{{!progression_fr}},{{!label}},'rgb(0, 0, 255)','Mortalité en France');
-     display_graph('Chart_confirmed',{{!confirmed_data_fr}},{{!label}},'rgb(0, 0, 102)','Confirmed');
+     display_graph('Chart_confirmed',{{!confirmed_data_fr}},{{!label}},'rgb(0, 0, 102)','Nombre de cas confirmés en France');
+     display_graph('progression_us',{{!progression_us}},{{!label}},'rgb(0, 0, 255)','Mortalité US');
+     display_graph('confirmed_us',{{!confirmed_data_us}},{{!label}},'rgb(0, 0, 102)','Nombre de cas confirmés US');
+     display_graph('progression_uk',{{!progression_uk}},{{!label}},'rgb(0, 0, 255)','Mortalité Angleterre');
+     display_graph('confirmed_uk',{{!confirmed_data_uk}},{{!label}},'rgb(0, 0, 102)','Nombre de cas confirmés Angleterre');
    </script>
 
    <script>

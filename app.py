@@ -177,6 +177,8 @@ def index():
 					confirmed_data_fr=confirmed_progression_france,
 					progression_us=progression_us,
 					confirmed_data_us=confirmed_progression_us,
+					progression_uk=progression_uk,
+					confirmed_data_uk=confirmed_progression_uk,
 					data_fr=mean_fr,
 					data_us=mean_us,
 					data_uk=mean_uk,
