@@ -57,9 +57,9 @@ def derivee(raw_data):
 	return prog
 
 def moyenne(raw_data, population):
-#cette fonction permet de ramener les chiffres à la population (pour 10 000 habitants)
+#cette fonction permet de ramener les chiffres à la population (pour 1 000 000 habitants)
 	moy=[]
-	moy=[i*10000/population for i in raw_data]
+	moy=[i*1000000/population for i in raw_data]
 	# suppression des valeurs abérantes
 	#for c,i in enumerate(moy):
 		#if i > 0.20:
@@ -139,7 +139,7 @@ confirmed_progression_spain=derivee(confirmed_spain)
 confirmed_progression_uk=derivee(confirmed_uk)
 confirmed_progression_us=derivee(confirmed_us)
 
-#calcul de la moyenne pour 10 000 habitants
+#calcul de la moyenne pour 1 000 000 habitants
 mean_fr=moyenne(progression_france, population_fr)
 mean_it=moyenne(progression_italy, population_it)
 mean_sp=moyenne(progression_spain,population_sp)
@@ -194,6 +194,11 @@ def index():
 					last_value_uk=progression_uk[-1],
 					last_value_sp=progression_spain[-1],
 					last_value_it=progression_italy[-1],
+					last_value_confirmed_fr=confirmed_progression_france[-1],
+					last_value_confirmed_us=confirmed_progression_us[-1],
+					last_value_confirmed_uk=confirmed_progression_uk[-1],
+					last_value_confirmed_sp=confirmed_progression_spain[-1],
+					last_value_confirmed_it=confirmed_progression_italy[-1],
 					)
 
 run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)

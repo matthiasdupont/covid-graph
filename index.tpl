@@ -3,7 +3,6 @@
    <title>Covid Data graph</title>
    <link rel="stylesheet" href="./static/style.css">
     <script src="./static/Charts.js"></script>
-    <script src="./static/annotation.js"></script>
  </head>
  <body>
    <div id="intro-text">
@@ -12,13 +11,40 @@
      </p>
    </br>Last update: {{!update_time}}
       <script>
-        print({{!update_time}});
+      //  print({{!update_time}});
       </script>
-    </br>  Last value france: {{!last_value_fr}}
-    </br>  Last value US: {{!last_value_us}}
-    </br>  Last value UK: {{!last_value_uk}}
-    </br>  Last value Spain: {{!last_value_sp}}
-    </br>  Last value Italy: {{!last_value_it}}
+
+        <table border="1">
+        <th>Country</th>
+        <th>Death</th>
+        <th>Confirmed</th>
+        <tr>
+            <td>France</td>
+            <td>{{!last_value_fr}}</td>
+            <td>{{!last_value_confirmed_fr}}</td>
+        </tr>
+        <tr>
+            <td>USA</td>
+            <td>{{!last_value_us}}</td>
+            <td>{{!last_value_confirmed_us}}</td>
+        </tr>
+        <tr>
+            <td>UK</td>
+            <td>{{!last_value_uk}}</td>
+            <td>{{!last_value_confirmed_uk}}</td>
+        </tr>
+        <tr>
+            <td>Spain</td>
+            <td>{{!last_value_uk}}</td>
+            <td>{{!last_value_confirmed_sp}}</td>
+        </tr>
+        <tr>
+            <td>Italy</td>
+            <td>{{!last_value_uk}}</td>
+            <td>{{!last_value_confirmed_it}}</td>
+        </tr>
+    </table>
+
     </div>
 
     <div style="width:75%">
@@ -57,7 +83,8 @@
     </script>
 
 <script type="text/javascript">
-  function display_graph(graph_id,graph_data,graph_labels,graph_color,title) {
+  function display_graph(graph_id,graph_data,graph_labels,graph_color,title) 
+  {
     var ctx = document.getElementById(graph_id).getContext('2d');
     var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -78,12 +105,11 @@
     },
     // Configuration options go here
     options: {
-      title: {
+      title:
+      {
         text:title
       }
-    }
-  });
-
+  }});
   }
 </script>
    <script>
@@ -147,7 +173,7 @@
     // Configuration options go here
     options: {
       title: {
-        text:"Compared evolution of Death (per 10 000 inhabitants)"
+        text:"Compared evolution of Death (per 1 000 000 inhabitants)"
       }
     }
 });
@@ -205,7 +231,7 @@
     // Configuration options go here
     options: {
       title: {
-        text:"Last 2 Months compared death evolution (per 10 000 inhabitants)"
+        text:"Last 2 Months compared death evolution (per 1 000 000 inhabitants)"
       }
     }
 });
