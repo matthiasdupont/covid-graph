@@ -189,6 +189,7 @@ def index():
 					data_month_uk=mean_uk[-60:],
 					data_month_it=mean_it[-60:],
 					data_month_sp=mean_sp[-60:],
+					last_update=labels[-1],
 					last_value_fr=progression_france[-1],
 				    last_value_us=progression_us[-1],
 					last_value_uk=progression_uk[-1],

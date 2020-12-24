@@ -9,7 +9,8 @@
      <p class="normal_text">
        Source: Center for Systems Science and Engineering (CSSE) at Johns Hopkins University <a href="https://github.com/CSSEGISandData/COVID-19">Github Repository</a>
      </p>
-   </br>Last update: {{!update_time}}
+   </br>Last update: {{!last_update}}
+   </br>
       <script>
       //  print({{!update_time}});
       </script>
@@ -35,46 +36,46 @@
         </tr>
         <tr>
             <td>Spain</td>
-            <td>{{!last_value_uk}}</td>
+            <td>{{!last_value_sp}}</td>
             <td>{{!last_value_confirmed_sp}}</td>
         </tr>
         <tr>
             <td>Italy</td>
-            <td>{{!last_value_uk}}</td>
+            <td>{{!last_value_it}}</td>
             <td>{{!last_value_confirmed_it}}</td>
         </tr>
     </table>
 
     </div>
 
-    <div style="width:75%">
+    <div style="width:95%">
       <canvas id="Progression_france_chart"></canvas>
     </div>
 
-    <div style="width:75%">
+    <div style="width:95%">
       <canvas id="Chart_confirmed"></canvas>
     </div>
-    <div style="width:75%">
+    <div style="width:95%">
       <canvas id="progression_us"></canvas>
     </div>
 
-    <div style="width:75%">
+    <div style="width:95%">
       <canvas id="confirmed_us"></canvas>
     </div>
 
-    <div style="width:75%">
+    <div style="width:95%">
       <canvas id="progression_uk"></canvas>
     </div>
 
-    <div style="width:75%">
+    <div style="width:95%">
       <canvas id="confirmed_uk"></canvas>
     </div>
 
-    <div style="width:75%">
+    <div style="width:95%">
       <canvas id="compared_evolution_chart"></canvas>
     </div>
 
-    <div style="width:75%">
+    <div style="width:95%">
       <canvas id="monthly_evolution"></canvas>
     </div>
     <script>
