@@ -22,6 +22,7 @@ fichier2 = '/opt/app/time_series_covid19_confirmed_global.csv'
 #path  = "."
 wget_file1="wget -q https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
 wget_file2="wget -q https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+wget_vaccine="wget -q https://raw.githubusercontent.com/govex/COVID-19/master/data_tables/vaccine_data/global_data/time_series_covid19_vaccine_global.csv"
 
 #os.chdir(path) # Specifying the path where the cloned project needs to be copied
 
