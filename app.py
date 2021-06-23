@@ -11,6 +11,8 @@ import time
 
 fichier = '/opt/app/time_series_covid19_deaths_global.csv'
 fichier2 = '/opt/app/time_series_covid19_confirmed_global.csv'
+vaccineFile = '/opt/app/time_series_covid19_vaccine_global.csv'
+
 
 # datafile for local testing (home desktop)
 #fichier="/Users/matthias/python/data/COVID19/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
