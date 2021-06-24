@@ -1,6 +1,6 @@
 <html>
  <head>
-   <title>Covid Data graph</title>
+   <title>My Covid Data graph</title>
    <link rel="stylesheet" href="./static/style.css">
     <script src="./static/Charts.js"></script>
  </head>
