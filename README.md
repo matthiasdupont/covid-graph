@@ -8,7 +8,7 @@ docker build -t html-graph:0.1 .
 ````
 # run docker image
 ````shell
-docker run -p 8080:8080 html-graph:0.2
+docker run -p 8080:8080 html-graph:0.1
 ````
 
 use http://localhost:8080 on your browser
