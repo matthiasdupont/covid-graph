@@ -31,6 +31,7 @@ wget_vaccine="wget -q https://raw.githubusercontent.com/govex/COVID-19/master/da
 print("cloning Github data" )
 os.system(wget_file1) # Cloning
 os.system(wget_file2)
+os.system(wget_vaccine)
 print("end cloning")
 
 #Get update time
@@ -70,6 +71,7 @@ def moyenne(raw_data, population):
 	return moy
 
 #print ("3 - lecture fichiers")
+#death file 
 with open(fichier, 'r') as f:
 	tab_reader = csv.reader(f, delimiter=',')
 	for row in tab_reader:
@@ -98,7 +100,7 @@ with open(fichier, 'r') as f:
 				longueur=len(row)
 				us=row[debut:longueur]
 
-
+#confirmed file
 with open(fichier2, 'r') as f:
 	tab_reader = csv.reader(f, delimiter=',')
 	for row in tab_reader:
@@ -126,6 +128,9 @@ with open(fichier2, 'r') as f:
 			if state == 'US':
 				longueur=len(row)
 				confirmed_us=row[debut:longueur]
+
+
+#vaccine file
 
 #calculs
 # la progression est la dérivée des données brutes ...
