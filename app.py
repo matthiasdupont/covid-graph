@@ -131,6 +131,9 @@ with open(fichier2, 'r') as f:
 
 
 #vaccine file
+with open(vaccineFile, 'r') as f:
+  tab_reader = csv.reader(f, delimiter=',')
+	for row in tab_reader:
 
 #calculs
 # la progression est la dérivée des données brutes ...
