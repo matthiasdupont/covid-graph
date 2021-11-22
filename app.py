@@ -43,7 +43,7 @@ population_fr = 67848156
 population_it = 60359546
 population_sp = 46934632
 population_uk = 65761117
-population_ger = 83149300 
+population_germany = 83149300 
 debut = 50
 labels=list()
 
@@ -100,9 +100,9 @@ with open(fichier, 'r') as f:
 			if state == 'US':
 				longueur=len(row)
 				us=row[debut:longueur]
-      if state == 'Germany':
+			if state == 'Germany':
 				longueur=len(row)
-				germany=row[debut:longueur]
+				germany=row[debut:longueur]        
 
 #confirmed file
 with open(fichier2, 'r') as f:
@@ -217,17 +217,20 @@ def index():
 					data_month_uk=mean_uk[-60:],
 					data_month_it=mean_it[-60:],
 					data_month_sp=mean_sp[-60:],
+          data_month_germany=mean_germany[-60:],
 					last_update=labels[-1],
 					last_value_fr=progression_france[-1],
-				    	last_value_us=progression_us[-1],
+				  last_value_us=progression_us[-1],
 					last_value_uk=progression_uk[-1],
 					last_value_sp=progression_spain[-1],
 					last_value_it=progression_italy[-1],
+          last_value_germany=progression_germany[-1],
 					last_value_confirmed_fr=confirmed_progression_france[-1],
 					last_value_confirmed_us=confirmed_progression_us[-1],
 					last_value_confirmed_uk=confirmed_progression_uk[-1],
 					last_value_confirmed_sp=confirmed_progression_spain[-1],
 					last_value_confirmed_it=confirmed_progression_italy[-1],
+          last_value_confirmed_germany=confirmed_progression_germany[-1],
 					)
 
 run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)

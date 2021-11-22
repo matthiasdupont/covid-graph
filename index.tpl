@@ -43,7 +43,12 @@
             <td>Italy</td>
             <td>{{!last_value_it}}</td>
             <td>{{!last_value_confirmed_it}}</td>
-        </tr> 
+        </tr>
+        <tr>
+            <td>Germany</td>
+            <td>{{!last_value_germany}}</td>
+            <td>{{!last_value_confirmed_germany}}</td>
+        </tr>  
     </table>
 
     </div>
