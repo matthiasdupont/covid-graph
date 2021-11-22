@@ -43,6 +43,7 @@ population_fr = 67848156
 population_it = 60359546
 population_sp = 46934632
 population_uk = 65761117
+population_ger = 83149300 
 debut = 50
 labels=list()
 
@@ -99,6 +100,9 @@ with open(fichier, 'r') as f:
 			if state == 'US':
 				longueur=len(row)
 				us=row[debut:longueur]
+      if state == 'Germany':
+				longueur=len(row)
+				germany=row[debut:longueur]
 
 #confirmed file
 with open(fichier2, 'r') as f:
@@ -128,12 +132,18 @@ with open(fichier2, 'r') as f:
 			if state == 'US':
 				longueur=len(row)
 				confirmed_us=row[debut:longueur]
+			if state == 'Germany':
+				longueur=len(row)
+				confirmed_germany=row[debut:longueur]
 
 
 #vaccine file
 with open(vaccineFile, 'r') as f:
   tab_reader = csv.reader(f, delimiter=',')
-	for row in tab_reader:
+  for row in tab_reader:
+    blabla = row[0]
+  
+    
 
 #calculs
 # la progression est la dérivée des données brutes ...
@@ -143,12 +153,14 @@ progression_italy=derivee(italy)
 progression_spain=derivee(spain)
 progression_uk=derivee(uk)
 progression_us=derivee(us)
+progression_germany=derivee(germany)
 
 confirmed_progression_france = derivee(confirmed_france)
 confirmed_progression_italy=derivee(confirmed_italy)
 confirmed_progression_spain=derivee(confirmed_spain)
 confirmed_progression_uk=derivee(confirmed_uk)
 confirmed_progression_us=derivee(confirmed_us)
+confirmed_progression_germany=derivee(confirmed_germany)
 
 #calcul de la moyenne pour 1 000 000 habitants
 mean_fr=moyenne(progression_france, population_fr)
@@ -156,12 +168,14 @@ mean_it=moyenne(progression_italy, population_it)
 mean_sp=moyenne(progression_spain,population_sp)
 mean_uk=moyenne(progression_uk,population_uk)
 mean_us=moyenne(progression_us, population_us)
+mean_germany=moyenne(progression_germany, population_germany)
 
 confirmed_mean_fr=moyenne(confirmed_progression_france, population_fr)
 confirmed_mean_it=moyenne(confirmed_progression_italy, population_it)
 confirmed_mean_sp=moyenne(confirmed_progression_spain,population_sp)
 confirmed_mean_uk=moyenne(confirmed_progression_uk,population_uk)
 confirmed_mean_us=moyenne(confirmed_progression_us, population_us)
+confirmed_mean_germany=moyenne(confirmed_progression_germany, population_germany)
 
 #
 
@@ -190,11 +204,14 @@ def index():
 					confirmed_data_us=confirmed_progression_us,
 					progression_uk=progression_uk,
 					confirmed_data_uk=confirmed_progression_uk,
+          progression_germany=progression_germany,
+					confirmed_data_germany=confirmed_progression_germany,
 					data_fr=mean_fr,
 					data_us=mean_us,
 					data_uk=mean_uk,
 					data_it=mean_it,
 					data_sp=mean_sp,
+          data_ger=mean_germany,
 					data_month_fr=mean_fr[-60:],
 					data_month_us=mean_us[-60:],
 					data_month_uk=mean_uk[-60:],
