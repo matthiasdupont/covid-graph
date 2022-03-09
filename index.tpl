@@ -3,7 +3,7 @@
    <title>My Covid Data graph</title>
    <link rel="stylesheet" href="./static/style.css">
     <script src="./static/Charts.js"></script>
- </head>
+ </head> 
  <body>
    <div id="intro-text">
      <p class="normal_text">

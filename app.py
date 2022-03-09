@@ -3,6 +3,24 @@ import csv
 import os
 import sys
 import time
+import logging
+
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(name)s:%(levelname)s:%(message)s') # nous utilisons des formats différents pour le fichier et pour la console 
+formatter_stream = logging.Formatter('%(asctime)s:%(name)s:%(levelname)s:%(message)s')
+
+file_handler = logging.FileHandler('sample.log')
+file_handler.setLevel(logging.ERROR)
+file_handler.setFormatter(formatter)
+
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter_stream)
+
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
 
 
 #fichier=os.environ['DATACOVID']
@@ -29,6 +47,7 @@ wget_vaccine="wget -q https://raw.githubusercontent.com/govex/COVID-19/master/da
 #os.chdir(path) # Specifying the path where the cloned project needs to be copied
 
 print("cloning Github data" )
+logger.debug("Cloning Github Data")
 os.system(wget_file1) # Cloning
 os.system(wget_file2)
 os.system(wget_vaccine)
