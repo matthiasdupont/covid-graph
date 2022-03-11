@@ -40,6 +40,7 @@ vaccineFile = '/opt/app/time_series_covid19_vaccine_global.csv'
 
 # get the data files
 #path  = "."
+logger.debug("Define files from John Hopkins University in Github")
 wget_file1="wget -q https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
 wget_file2="wget -q https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
 wget_vaccine="wget -q https://raw.githubusercontent.com/govex/COVID-19/master/data_tables/vaccine_data/global_data/time_series_covid19_vaccine_global.csv"
@@ -47,14 +48,15 @@ wget_vaccine="wget -q https://raw.githubusercontent.com/govex/COVID-19/master/da
 #os.chdir(path) # Specifying the path where the cloned project needs to be copied
 
 print("cloning Github data" )
-logger.debug("Cloning Github Data")
+logger.debug("Start Cloning Github Data")
 os.system(wget_file1) # Cloning
 os.system(wget_file2)
 os.system(wget_vaccine)
+logger.debug("End Cloning Github Data")
 print("end cloning")
 
 #Get update time
-
+logger.debug("define consts")
 now = time.localtime(time.time())
 update_time = time.strftime("%y/%m/%d %H:%M", now)
 population_us = 329256465
@@ -229,4 +231,4 @@ def index():
 					last_value_confirmed_it=confirmed_progression_italy[-1],
 					)
 
-run(app, host='0.0.0.0', debug=True, reloader=True, port=8080)
+run(app, host='0.0.0.0', debug=True, reloader=False, port=8080)
