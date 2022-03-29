@@ -25,6 +25,7 @@ logger.addHandler(stream_handler)
 
 #fichier=os.environ['DATACOVID']
 # datafile for container
+# add comment
 #fichier = '/opt/app/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
 
 fichier = '/opt/app/time_series_covid19_deaths_global.csv'
