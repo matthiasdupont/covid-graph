@@ -10,14 +10,11 @@ jobs:
  
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 
     - uses: mr-smithers-excellent/docker-build-push@v5
       name: Build & push Docker image
       with:
         image: mattdupont/app-repo
-        tags: v1, latest
         registry: docker.io
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
