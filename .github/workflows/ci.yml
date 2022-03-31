@@ -16,6 +16,7 @@ jobs:
       with:
         image: mattdupont/app-repo
         registry: docker.io
+        tags: v1.${{ github.run_id }}
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
