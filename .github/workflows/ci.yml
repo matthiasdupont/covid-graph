@@ -1,5 +1,5 @@
 name: Docker Image CI
-
+# commentaire
 on:
   push:
     branches: [ master ]
@@ -38,7 +38,7 @@ jobs:
         docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
-
+   
     - name: Deploy Image to cloud Run
       run: |-
         gcloud run deploy "$SERVICE_NAME" \
