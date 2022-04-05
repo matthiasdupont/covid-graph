@@ -10,6 +10,9 @@ jobs:
     env:  
       IMAGE_NAME: graph-covid
       PROJECT_ID: focal-healer-219714
+      RUN_REGION: europe-north1
+      SERVICE_NAME: srvcovidgraph
+
     steps:
     - name: Checkout 
       uses: actions/checkout@v3
@@ -35,6 +38,17 @@ jobs:
         docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
+
+    - name: Deploy Image to cloud Run
+     run: |-
+        gcloud run deploy "$SERVICE_NAME" \
+          --quiet \
+          --region "$RUN_REGION" \
+          --image "gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG" \
+          --platform "managed" \
+          --allow-unauthenticated
+
+
 
 
 
