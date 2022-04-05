@@ -40,7 +40,7 @@ jobs:
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
 
     - name: Deploy Image to cloud Run
-     run: |-
+      run: |-
         gcloud run deploy "$SERVICE_NAME" \
           --quiet \
           --region "$RUN_REGION" \
