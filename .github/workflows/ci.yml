@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:  
       IMAGE_NAME: graph-covid
-      PROJECT_ID: focal-healer-219714
+      PROJECT_ID: myapp-219715
       RUN_REGION: europe-north1
       SERVICE_NAME: srvcovidgraph
 
