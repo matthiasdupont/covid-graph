@@ -12,7 +12,6 @@ jobs:
       PROJECT_ID: myapp-219715
       RUN_REGION: europe-north1
       SERVICE_NAME: srvcovidgraph
-      GIT_TAG: v0.1.0
 
     steps:
     - name: Checkout 
@@ -27,11 +26,18 @@ jobs:
     - name: Build Docker Image
       run: docker build -t $IMAGE_NAME:latest .
 
+    - name: Automatic tagging of releases  
+      id: increment-git-tag
+      run: | 
+        bash ./scripts/git_update.sh patch   
+
     - name: Configure Docker Client
       run: |-
         gcloud auth configure-docker --quiet
 
     - name: Push Docker Image to Container Registry (GCR)   
+      env :
+        GIT_TAG: ${{ steps.increment-git-tag.git-tag }}
       run: |-
         docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
         docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
@@ -39,6 +45,8 @@ jobs:
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
    
     - name: Deploy Image to cloud Run
+      env :
+        GIT_TAG: ${{ steps.increment-git-tag.git-tag }}
       run: |-
         gcloud run deploy "$SERVICE_NAME" \
           --quiet \
