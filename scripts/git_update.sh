@@ -3,6 +3,8 @@
 VERSION=""
 
 # get parameters
+
+echo "get parameters"
 while getopts v: flag
 do
   case "${flag}"  in
@@ -11,6 +13,7 @@ do
 done
 
 # get highest tag number, and add v0.1.0 if doesn't exist
+echo "get highest tag number"
 git fetch --prune --unshallow 2>/dev/null
 CURRENT_VERSION=`git describe --abbrev=0 --tags 2>/dev/null`
 
