@@ -91,6 +91,22 @@ def moyenne(raw_data, population):
 			#moy[c]=0
 	return moy
 
+def lissage(raw_data):
+#cette fonction permet de lisser une courbe en utilisant la moyenne de x dernières données
+	lissee=[]
+	value=0
+	for i, v in enumerate(raw_data[7:]):
+		try:
+			if i > 5:
+				value=((raw_data[i-1]+raw_data[i-2]+raw_data[i-3]+raw_data[i-4]+raw_data[i-5]+raw_data[i-6]+raw_data[i-7])/7)
+		except ValueError:
+			print("[ERROR] in derivee function : could not convert data into an integer.")
+		if value > 0:
+			lissee.append(value)
+		else:
+			lissee.append(0)
+	return lissee
+
 #print ("3 - lecture fichiers")
 #death file 
 with open(fichier, 'r') as f:
@@ -156,17 +172,17 @@ with open(fichier2, 'r') as f:
 #calculs
 # la progression est la dérivée des données brutes ...
 #print ("calculs")
-progression_france = derivee(france)
-progression_italy=derivee(italy)
-progression_spain=derivee(spain)
-progression_uk=derivee(uk)
-progression_us=derivee(us)
+progression_france = lissage(derivee(france))
+progression_italy=lissage(derivee(italy))
+progression_spain=lissage(derivee(spain))
+progression_uk=lissage(derivee(uk))
+progression_us=lissage(derivee(us))
 
-confirmed_progression_france = derivee(confirmed_france)
-confirmed_progression_italy=derivee(confirmed_italy)
-confirmed_progression_spain=derivee(confirmed_spain)
-confirmed_progression_uk=derivee(confirmed_uk)
-confirmed_progression_us=derivee(confirmed_us)
+confirmed_progression_france = lissage(derivee(confirmed_france))
+confirmed_progression_italy=lissage(derivee(confirmed_italy))
+confirmed_progression_spain=lissage(derivee(confirmed_spain))
+confirmed_progression_uk=lissage(derivee(confirmed_uk))
+confirmed_progression_us=lissage(derivee(confirmed_us))
 
 #calcul de la moyenne pour 1 000 000 habitants
 mean_fr=moyenne(progression_france, population_fr)
