@@ -139,35 +139,40 @@
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 255)',
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!data_fr}}
+            data: {{!data_fr}},
+            pointRadius: 0
           },
           {
             label: 'US',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 102)',
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!data_us}}
+            data: {{!data_us}},
+            pointRadius: 0
           },
           {
             label: 'UK',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(102, 255, 102)',
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!data_uk}}
+            data: {{!data_uk}},
+            pointRadius: 0
           },
           {
             label: 'SP',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 255, 102)',
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!data_sp}}
+            data: {{!data_sp}},
+            pointRadius: 0
           },
           {
             label: 'IT',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 0, 0)',
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!data_it}}
+            data: {{!data_it}},
+            pointRadius: 0
           }
 
       ]
@@ -197,35 +202,40 @@
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 255)',
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!data_month_fr}}
+            data: {{!data_month_fr}},
+            pointRadius: 0
           },
           {
             label: 'US',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(0, 0, 102)',
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!data_month_us}}
+            data: {{!data_month_us}},
+            pointRadius: 0
           },
           {
             label: 'UK',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(102, 255, 102)',
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!data_month_uk}}
+            data: {{!data_month_uk}},
+            pointRadius: 0
           },
           {
             label: 'SP',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 255, 102)',
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!data_month_sp}}
+            data: {{!data_month_sp}},
+            pointRadius: 0
           },
           {
             label: 'IT',
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 0, 0)',
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: {{!data_month_it}}
+            data: {{!data_month_it}},
+            pointRadius: 0
           }
 
       ]

@@ -97,8 +97,10 @@ def lissage(raw_data):
 	value=0
 	for i, v in enumerate(raw_data[7:]):
 		try:
-			if i > 5:
+			if i > 2:
 				value=((raw_data[i-1]+raw_data[i-2]+raw_data[i-3]+raw_data[i-4]+raw_data[i-5]+raw_data[i-6]+raw_data[i-7])/7)
+			else:
+				value=raw_data[i]
 		except ValueError:
 			print("[ERROR] in derivee function : could not convert data into an integer.")
 		if value > 0:
