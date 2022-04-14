@@ -100,7 +100,8 @@
             label: title,
             borderColor: graph_color,
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: graph_data
+            data: graph_data,
+            pointRadius: 0
           },
         ]
     },
@@ -114,12 +115,12 @@
   }
 </script>
    <script>
-     display_graph('Progression_france_chart',{{!progression_fr}},{{!label}},'rgb(0, 0, 255)','Mortalité en France');
-     display_graph('Chart_confirmed',{{!confirmed_data_fr}},{{!label}},'rgb(0, 0, 102)','Nombre de cas confirmés en France');
-     display_graph('progression_us',{{!progression_us}},{{!label}},'rgb(0, 0, 255)','Mortalité US');
-     display_graph('confirmed_us',{{!confirmed_data_us}},{{!label}},'rgb(0, 0, 102)','Nombre de cas confirmés US');
-     display_graph('progression_uk',{{!progression_uk}},{{!label}},'rgb(0, 0, 255)','Mortalité Angleterre');
-     display_graph('confirmed_uk',{{!confirmed_data_uk}},{{!label}},'rgb(0, 0, 102)','Nombre de cas confirmés Angleterre');
+     display_graph('Progression_france_chart',{{!progression_fr}},{{!label}},'rgb(0, 0, 255)','Mortalité en France (Valeurs lissées sur 7 jours)');
+     display_graph('Chart_confirmed',{{!confirmed_data_fr}},{{!label}},'rgb(0, 0, 102)','Nombre de cas confirmés en France (Valeurs lissées sur 7 jours)');
+     display_graph('progression_us',{{!progression_us}},{{!label}},'rgb(0, 0, 255)','Mortalité US (Valeurs lissées sur 7 jours)');
+     display_graph('confirmed_us',{{!confirmed_data_us}},{{!label}},'rgb(0, 0, 102)','Nombre de cas confirmés US (Valeurs lissées sur 7 jours)');
+     display_graph('progression_uk',{{!progression_uk}},{{!label}},'rgb(0, 0, 255)','Mortalité Angleterre (Valeurs lissées sur 7 jours)');
+     display_graph('confirmed_uk',{{!confirmed_data_uk}},{{!label}},'rgb(0, 0, 102)','Nombre de cas confirmés Angleterre (Valeurs lissées sur 7 jours)');
    </script>
 
    <script>

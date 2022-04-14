@@ -172,17 +172,17 @@ with open(fichier2, 'r') as f:
 #calculs
 # la progression est la dérivée des données brutes ...
 #print ("calculs")
-progression_france = lissage(derivee(france))
-progression_italy=lissage(derivee(italy))
-progression_spain=lissage(derivee(spain))
-progression_uk=lissage(derivee(uk))
-progression_us=lissage(derivee(us))
+progression_france = derivee(france)
+progression_italy=derivee(italy)
+progression_spain=derivee(spain)
+progression_uk=derivee(uk)
+progression_us=derivee(us)
 
-confirmed_progression_france = lissage(derivee(confirmed_france))
-confirmed_progression_italy=lissage(derivee(confirmed_italy))
-confirmed_progression_spain=lissage(derivee(confirmed_spain))
-confirmed_progression_uk=lissage(derivee(confirmed_uk))
-confirmed_progression_us=lissage(derivee(confirmed_us))
+confirmed_progression_france = derivee(confirmed_france)
+confirmed_progression_italy=derivee(confirmed_italy)
+confirmed_progression_spain=derivee(confirmed_spain)
+confirmed_progression_uk=derivee(confirmed_uk)
+confirmed_progression_us=derivee(confirmed_us)
 
 #calcul de la moyenne pour 1 000 000 habitants
 mean_fr=moyenne(progression_france, population_fr)
@@ -218,25 +218,25 @@ def index():
 					update_time=update_time,
 					label=labels,
 					month_label=labels[-60:],
-					progression_fr=progression_france,
-					confirmed_data_fr=confirmed_progression_france,
-					progression_us=progression_us,
-					confirmed_data_us=confirmed_progression_us,
-					progression_uk=progression_uk,
-					confirmed_data_uk=confirmed_progression_uk,
-					data_fr=mean_fr,
-					data_us=mean_us,
-					data_uk=mean_uk,
-					data_it=mean_it,
-					data_sp=mean_sp,
-					data_month_fr=mean_fr[-60:],
-					data_month_us=mean_us[-60:],
-					data_month_uk=mean_uk[-60:],
-					data_month_it=mean_it[-60:],
-					data_month_sp=mean_sp[-60:],
+					progression_fr=lissage(progression_france),
+					confirmed_data_fr=lissage(confirmed_progression_france),
+					progression_us=lissage(progression_us),
+					confirmed_data_us=lissage(confirmed_progression_us),
+					progression_uk=lissage(progression_uk),
+					confirmed_data_uk=lissage(confirmed_progression_uk),
+					data_fr=lissage(mean_fr),
+					data_us=lissage(mean_us),
+					data_uk=lissage(mean_uk),
+					data_it=lissage(mean_it),
+					data_sp=lissage(mean_sp),
+					data_month_fr=lissage(mean_fr[-60:]),
+					data_month_us=lissage(mean_us[-60:]),
+					data_month_uk=lissage(mean_uk[-60:]),
+					data_month_it=lissage(mean_it[-60:]),
+					data_month_sp=lissage(mean_sp[-60:]),
 					last_update=labels[-1],
 					last_value_fr=progression_france[-1],
-				    	last_value_us=progression_us[-1],
+				    last_value_us=progression_us[-1],
 					last_value_uk=progression_uk[-1],
 					last_value_sp=progression_spain[-1],
 					last_value_it=progression_italy[-1],
