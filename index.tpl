@@ -7,7 +7,7 @@
  <body>
    <div id="intro-text">
      <p class="normal_text">
-      The Source Data are coming from the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University <a href="https://github.com/CSSEGISandData/COVID-19">Github Repository</a>
+      The Source Data are coming from the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University. <a href="https://github.com/CSSEGISandData/COVID-19">Github Repository</a>
      </p>
    </br>Last update: {{!last_update}}
    </br>
